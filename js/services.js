@@ -24,19 +24,19 @@ angular.module('starter')
     isAuthenticated = true;
     authToken = token;
  
-    if (username == 'webldap') {
+    if (username == '') {     // windows/exchange username with admin role
       role = USER_ROLES.admin
     }
-    if (username == 'sahmed') {
+    if (username == '') {     //windows/exchange username with public role
       role = USER_ROLES.public
     }
-    if (username == 'mhaug') {
+    if (username == '') {
       role = USER_ROLES.public
     }
-    if (username == 'tfister') {
+    if (username == '') {
       role = USER_ROLES.public
     }
-    if (username == 'barryj') {
+    if (username == '') {   //windows/exchange username with public role; this should be implemented by DB code
       role = USER_ROLES.public
     }
     // Set the token as header for your requests!
@@ -53,9 +53,9 @@ angular.module('starter')
  
   var login = function(name, pw) {
     return $q(function(resolve, reject) {
-//      $http.get( 'http://www.chesterfield.mo.us/cmss_files/mytest.php?type=loginLDAP&username='+name+'&password='+pw )
-      
-      $http.get( 'http://www.chesterfield.mo.us/cmss_files/mytest.php?type=loginLDAP&username='+name+'&password='+encodeURIComponent(pw) )
+
+      var url = ''; //url removed
+      $http.get( url+'&username='+name+'&password='+encodeURIComponent(pw) )
             .success(
               function(data, status, header, config){
                 if (data=='login success') {
