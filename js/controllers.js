@@ -81,7 +81,8 @@ angular.module('starter')
 
   $scope.fetchWO = function(scr) {
 
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=searchWO', {
+    //url removed
+    $http.get('', {
     }, {
       headers: {
           'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
@@ -101,8 +102,9 @@ angular.module('starter')
   
   $scope.searchQuery = function(qr){
     
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=searchWO'
-      +'&woStatus='+qr.woStatus+'&assignedTo='+qr.assignedTo)
+    //url removed
+    $http.get(''
+      +'&wo='+qr.woStatus+'&To='+qr.assignedTo)
     .success(function(data,status,headers,config){
       $scope.chats = data;
       Chats.chats = data;
@@ -144,7 +146,8 @@ angular.module('starter')
       animation: 'slide-in-up'
     });
     
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=loadWO&id='+$stateParams.chatId, {
+    //url removed
+    $http.get('&id='+$stateParams.chatId, {
     }, {
       headers: {
           'Access-Control-Allow-Origin': '*'
@@ -171,12 +174,9 @@ angular.module('starter')
   };
 
   $scope.createTask = function(pm){
-    //var url = 'http://www.chesterfield.mo.us/cmss_files/mytest.php?type=deleteWO&id=';
-      //+ $stateParams.chatId+'&manHr='+pm.manHr+'&solution='+pm.solution+'&started='+pm.started+'&completed='+pm.completed;
-    //alert('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=deleteWO&id='
-     // + $stateParams.chatId+'&manHr='+pm.manHr+'&solution='+pm.solution+'&started='+pm.started+'&completed='+pm.completed);
-    
-    $http.get('http://www.chesterfield.mo.us/cmss_files/mytest.php?type=deleteWO&id='
+//url removed 
+var url = '';
+    $http.get(url+'&id='
       + $stateParams.chatId+'&manHr='+pm.manHr+'&solution='+pm.solution+'&started='+pm.started+'&completed='+pm.completed)
     .success(function(data,status,headers,config){
       //$scope.chat = data;
