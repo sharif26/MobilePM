@@ -1,0 +1,83 @@
+<ion-view cach-view="false" view-title="Active PM">
+  <ion-nav-buttons side="secondary" class="bar-dark">
+    <button class="button button-icon" ng-click="showQuery()">
+      <i class="icon ion-compose"></i>
+    </button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    </ion-refresher>    
+    <ion-list>
+      <ion-item on-hold="newTask()" class="item-remove-animate  item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/main/chats/{{chat.WO_NO}}">
+        <!--<img ng-src="{{chat.face}}">-->
+        <h2>{{chat.equipname}}</h2>
+        <p>{{chat.location}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-calm" ng-click="remove(chat)">
+          Hide
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+
+<script id="query.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Enter Query Criteria</h1>
+          <button class="button button-clear button-positive" ng-click="closeQuery()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+          <form ng-submit="searchQuery(qr)">
+            <div class="list">
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Status 
+                </div>
+                <select ng-model="qr.woStatus">
+                  <option value="">All</option>
+                  <option value="open">Open</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </label>
+              
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Assigned To 
+                </div>
+                <select ng-model="qr.assignedTo">
+                  <option value="">Select one...</option>
+                  <option value="118">Barry Johnson</option>
+                  <option value="126">Derrick Flannagan</option>
+                  <option value="124">Devin Kitrel</option>
+                  <option value="121">June Hodges</option>
+                  <option value="125">Malissa Fredrick</option>
+                  <option value="122">Sam Oliva</option>
+                  <option value="119">Tim Fister</option>
+                  <option value="120">Vito Lodato</option>
+                  <option value="123">Wanda Morgan</option>
+                </select>
+              </label>
+              <!--
+              <label class="item item-input">
+                <span class="input-label">Started</span>
+                <input type="date" ng-model="pm.started">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Completed</span>
+                <input type="date" ng-model="pm.completed">
+              </label>
+            </div>
+            -->
+            <div class="padding">
+              <button type="submit" class="button button-block button-positive">
+                Query
+              </button>
+            </div>
+          </form>
+        </ion-content>
+        </div>    
+</script> 

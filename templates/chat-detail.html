@@ -1,0 +1,65 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view cach-view="false" view-title="{{apm.equipname}}">
+  <ion-content class="padding">
+    <!--<img ng-src="{{chat.face}}" style="width: 64px; height: 64px">-->
+    <button class="button button-full button-positive" ng-click="newTask()">
+        Completed
+    </button>
+    
+    <p> 
+      <a href="#" onclick="window.open('http://www.chesterfield.mo.us/cmss_files/photogallery/2432275717_Liebert Wiring Diagrams AHU Cond Unit.pdf', '_system', 'location=no'); return false;">
+                Open a Browser
+      </a> <br /> 
+      Active PM#: {{apm.WO_NO}} <br />
+      Description: {{chat.desc}} <br />
+      Serial No: {{chat.serialno}}
+      <h2> Tasks </h2>
+	    <!-- {{chat.schedulepurpose}} -->
+      <ion-list >
+      <ion-item ng-repeat="para in chat.schedulepurpose|periodToArray " class="chat-item">
+       {{para}} 
+      </ion-item>
+      </ion-list>
+    </p><br />
+  </ion-content>
+</ion-view>
+
+<script id="new-task.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Complete PM</h1>
+          <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+        </ion-header-bar>
+        <ion-content>
+          <form ng-submit="createTask(pm)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="number" placeholder="Man Hour" ng-model="pm.manHr">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Notes" ng-model="pm.solution">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Started</span>
+                <input type="date" ng-model="pm.started">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Completed</span>
+                <input type="date" ng-model="pm.completed">
+              </label>
+            </div>
+            <div class="padding">
+              <button type="submit" class="button button-block button-positive">
+                Completed
+              </button>
+            </div>
+          </form>
+        </ion-content>
+        </div>    
+</script> 
+
